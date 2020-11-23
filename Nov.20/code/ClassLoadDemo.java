@@ -4,17 +4,17 @@ public class ClassLoadTest {
     }
 }
 class A {
-    public A() {    //¸¸Àà¹¹ÔìÆ÷
+    public A() {    //çˆ¶ç±»æ„é€ å™¨
         System.out.println("class A");
     }
-    { System.out.println("I'm A class"); }      //¸¸Àà´úÂë¿é
-    static { System.out.println("class A static"); }    //¸¸Àà¾²Ì¬´úÂë¿é
+    { System.out.println("I'm A class"); }      //çˆ¶ç±»ä»£ç å—
+    static { System.out.println("class A static"); }    //çˆ¶ç±»é™æ€ä»£ç å—
 }
  class B extends A {
-    public B() {    //×ÓÀà¹¹ÔìÆ÷
+    public B() {    //å­ç±»æ„é€ æ–¹æ³•
         System.out.println("class B");
     }
-    { System.out.println("I'm B class"); }      //×ÓÀà´úÂë¿é
-    static { System.out.println("class B static"); }    //×ÓÀà¾²Ì¬´úÂë¿é
+    { System.out.println("I'm B class"); }      //å­ç±»ä»£ç å—
+    static { System.out.println("class B static"); }    //å­ç±»é™æ€ä»£ç å—
 
 }
