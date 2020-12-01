@@ -5,7 +5,7 @@ package collection.RBTree;
  * @param <T>
  * @param <D>
  */
-public class RBNode<T extends Comparable<T>, D> {
+ class RBNode<T extends Comparable<T>, D> {
      Boolean color;  //节点颜色
      T key;//键值
      D data;//数据域
