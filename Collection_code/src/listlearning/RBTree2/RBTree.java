@@ -1,15 +1,20 @@
-package collection.RBTree2;
+package listlearning.RBTree2;
 
 /**
- * 1.åˆ›å»ºRBTree,å®šä¹‰é¢œè‰²
- * 2.åˆ›å»ºRBNode
- * 3.è¾…åŠ©æ˜‚å‘å®šä¹‰ï¼šparentOf(node)ã€isRed(node)ã€setBlack(node)ã€inOrderPrint()
- * 4.å·¦æ—‹æ–¹æ³•å®šä¹‰ï¼šleftRotate(node)
- * 5.å³æ—‹æ–¹æ³•å®šä¹‰ï¼šrightRotate(node)
- * 6.å…¬å¼€æ’å…¥æ¥å£æ–¹æ³•å®šä¹‰ï¼šinsertï¼ˆK key,V valueï¼‰
- * 7.å†…éƒ¨æ’å…¥æ¥å£æ–¹æ³•æ–¹æ³•å®šä¹‰ï¼šinsert(RBNode node)
- * 8.ä¿®æ­£æ’å…¥åå¯¼è‡´çº¢é»‘æ ‘å¤±è¡¡çš„æ–¹æ³•å®šä¹‰ï¼šinsertFIxUP(RBNode node)
- * 9.æµ‹è¯•çº¢é»‘æ ‘æ­£ç¡®æ€§
+ * @Author: Dyk
+ * @Date: Created in 21:43 2020/12/1
+ */
+
+/**
+ * 1.´´½¨RBTree,¶¨ÒåÑÕÉ«
+ * 2.´´½¨RBNode
+ * 3.¸¨Öú°º·¢¶¨Òå£ºparentOf(node)¡¢isRed(node)¡¢setBlack(node)¡¢inOrderPrint()
+ * 4.×óĞı·½·¨¶¨Òå£ºleftRotate(node)
+ * 5.ÓÒĞı·½·¨¶¨Òå£ºrightRotate(node)
+ * 6.¹«¿ª²åÈë½Ó¿Ú·½·¨¶¨Òå£ºinsert£¨K key,V value£©
+ * 7.ÄÚ²¿²åÈë½Ó¿Ú·½·¨·½·¨¶¨Òå£ºinsert(RBNode node)
+ * 8.ĞŞÕı²åÈëºóµ¼ÖÂºìºÚÊ÷Ê§ºâµÄ·½·¨¶¨Òå£ºinsertFIxUP(RBNode node)
+ * 9.²âÊÔºìºÚÊ÷ÕıÈ·ĞÔ
  * @param <K>
  * @param <V>
  */
@@ -20,7 +25,7 @@ public class RBTree<K extends Comparable<K>,V> {
     private RBNode root;
 
     /**
-     * è·å–å½“å‰èŠ‚ç‚¹çš„çˆ¶èŠ‚ç‚¹
+     * »ñÈ¡µ±Ç°½ÚµãµÄ¸¸½Úµã
      * @param node
      * @return
      */
@@ -32,7 +37,7 @@ public class RBTree<K extends Comparable<K>,V> {
     }
 
     /**
-     * æ˜¯å¦ä¸ºçº¢è‰²
+     * ÊÇ·ñÎªºìÉ«
      * @param node
      * @return
      */
@@ -44,7 +49,7 @@ public class RBTree<K extends Comparable<K>,V> {
     }
 
     /**
-     * æ˜¯å¦ä¸ºé»‘è‰²
+     * ÊÇ·ñÎªºÚÉ«
      * @param node
      * @return
      *
@@ -58,17 +63,17 @@ public class RBTree<K extends Comparable<K>,V> {
     }
 
     /**
-     * è®¾ç½®èŠ‚ç‚¹ä¸ºçº¢è‰²
+     * ÉèÖÃ½ÚµãÎªºìÉ«
      * @param node
      */
     private void  setRed(RBNode node){
-       if (node != null){
-           node.color = RED;
-       }
+        if (node != null){
+            node.color = RED;
+        }
     }
 
     /**
-     * è®¾ç½®èŠ‚ç‚¹ä¸ºé»‘è‰²
+     * ÉèÖÃ½ÚµãÎªºÚÉ«
      * @param node
      */
     private void  setBlack(RBNode node){
@@ -78,7 +83,7 @@ public class RBTree<K extends Comparable<K>,V> {
     }
 
     /**
-     * ä¸­åºæ‰“å°äºŒå‰æ ‘
+     * ÖĞĞò´òÓ¡¶ş²æÊ÷
      */
     public void inOrderPrint(){
         inOrderPrint(this.root);
@@ -89,6 +94,125 @@ public class RBTree<K extends Comparable<K>,V> {
             System.out.println("key:" + node.key + "value:" + node.value);
         }
     }
+
+    /**
+     * ×óĞı²Ù×÷:
+     *      1.½¨Á¢x-lyµÄ¹ØÏµ£¬½«yµÄ×ó×Ó½ÚµãµÄ¸¸½Úµã¸üĞÂÎªx£¬²¢½«xµÄÓÒ×Ó½ÚµãÖ¸ÏòyµÄ×ó×Ó½Úµã£¨ly£©
+     *      2.½¨Á¢p-yµÄ¹ØÏµ£¬²¢Ö¸¶¨×ÓÊ÷¡£µ±xµÄ¸¸½Úµã£¨²»Îª¿ÕÊ±£©£¬¸üĞÂyµÄ¸¸½Úµã¸üĞÂÎªxµÄ¸¸½Úµã£¬²¢½«xµÄ¸¸½ÚµãÖ¸¶¨×ÓÊ÷£¨µ±Ç°xµÄÎ»ÖÃ£©£¬Ö¸¶¨Îªy¡£
+     *      3.½«xµÄ¸¸½Úµã¸üĞÂÎªy£¬½«yµÄ×ó×Ó½Úµã¸üĞÂÎªx
+     * @param x
+     */
+    private void leftRotate(RBNode x){
+        RBNode y = x.right;
+        //½¨Á¢x-lyµÄ¹ØÏµ
+        x.right = y.left;
+        if (y.left != null){
+            y.left.parent = x;
+        }
+         //½¨Á¢p-yµÄ¹ØÏµ
+        if (x.parent != null){
+            y.parent = x.parent;
+            //Ö¸¶¨×ÓÊ÷
+            if (x == x.parent.left){
+                x.parent.left = y;
+            }else {
+                x.parent.right = y;
+            }
+        }else {//ÎªnullÊ±Îª=¸ù½ÚµãµÄÇé¿ö
+            this.root = y;
+            y.parent = null;
+        }
+        //3.¸üĞÂ¸¸½Úµã
+        x.parent = y;
+        y.left = x;
+
+    }
+
+    /**
+     *ÓÒĞı²Ù×÷
+     * @param y
+     */
+    private void rightRotate(RBNode y){
+        RBNode x = y.right;
+        //½¨Á¢y-lyµÄÁªÏµ
+        y.left = x.right;
+        if (x.right != null){
+            x.right.parent = y;
+        }
+        //½¨Á¢ p-x ²¢Ö¸¶¨ÏàÓ¦×ÓÊ÷Î»ÖÃ
+        if (y.parent != null){
+            x.parent = y.parent;
+            if (y == y.parent.left){
+                y.parent.left = x;
+            }else {
+                y.parent.right = x;
+            }
+        }else {
+            this.root = x;
+            x.parent = null;
+        }
+        //3¸üĞÂ¸¸½Úµã
+        y.parent = x;
+        x.right = y;
+    }
+
+    /**
+     * ¹«¿ªµÄ²åÈë·½·¨
+     * @param key
+     * @param value
+     */
+    public void insert(K key,V value){
+        RBNode node = new RBNode();
+        node.setKey(key);
+        node.setValue(value);
+        //ĞÂ½ÚµãÄ¬ÈÏÎªºìÉ«
+        node.setColor(RED);
+    }
+
+    /**
+     * Ë½ÓĞµÄ²åÈë·½·¨£¬ÖØÔØÉÏÃæµÄ
+     * @param node
+     */
+    private void insert(RBNode node){
+        //µÚÒ»²½£º²éÕÒµ±Ç°nodeµÄ¸¸½Úµã
+        RBNode parent = null;
+        RBNode x = this.root;
+        while ( x != null){
+            parent = x;
+            //cmp > 0ËµÃ÷node.key´óÓÚ x.key ĞèÒªµ½xµÄÓÒ×ÓÊ÷²éÕÒ
+            // cmp == 0 ËµÃ÷ x.keyµÈÓÚ node.key ËµÃ÷Òª½øĞĞÌæ»»²Ù×÷
+            // cmp < 0 ËµÃ÷node.key Ğ¡ÓÚ x.key ĞèÒªµ½xµÄ×ó×ÓÊ÷²éÕÒ
+            int cmp = node.key.compareTo(x.key);
+            if (cmp > 0){
+                x = x.right;
+            }else if (cmp == 0){
+                x.setValue(node.getValue());
+                return;
+            }else {
+                x = x.left;
+            }
+        }
+
+        node.parent = parent;
+
+        //ÅĞ¶Ïnode ºÍ parent
+        if (parent != null){
+            int cmp = node.key.compareTo(parent.key);
+            if (cmp > 0) {//µ±Ç°nodeµÄkey±ÈparentµÄkey´ó£¬ĞèÒª°Ñnode·ÅÈëparentµÄÓÒ×Ó½Úµã
+                parent.right = node;
+            }else {//µ±Ç°nodeµÄkey±ÈparentµÄkey´ó£¬ĞèÒª°Ñnode·ÅÈëparentµÄ×ó×Ó½Úµã
+                parent.left = node;
+            }
+        }else {
+            this.root = node;
+        }
+
+        //ĞèÒªµ÷ÓÃĞŞ¸´ºìºÚÊ÷µÄ·½·¨
+//        insertFixUP();
+    }
+
+
+
 
     static class RBNode<K extends Comparable<K>,V>{
         private RBNode parent;
@@ -159,3 +283,4 @@ public class RBTree<K extends Comparable<K>,V> {
         }
     }
 }
+
